@@ -1,6 +1,9 @@
-# Program No--   04  [Simple version control]
+# Program No--   04  Simple version control
 # Goal--         To create a simple version control (svc) program called "svc".
 # Performed by-- Kinshuk Nigam
+
+# NOTE---- To run, $chmod 777 svc	$cp svc /usr/bin/	$svc test.txt...
+
 
 
 #! /usr/bin/bash
@@ -12,7 +15,7 @@ fi
 
 	arg=$1
 
-if [[ $arg  == *.txt ]]; then
+if [[ $arg  == "test.txt" ]]; then			# ------- UPDATING VERSION -------
 
 
 	touch repository.txt
@@ -20,7 +23,7 @@ if [[ $arg  == *.txt ]]; then
 	IFS=$'\n'					
 
 
-	if [ -s repository.txt ]; then				# Check whether repository file empty or not
+	if [ -s repository.txt ]; then			# Check whether repository file empty or not
 
 
 
@@ -32,6 +35,7 @@ out_filename="$(cat ${filename})"						      # printing lines in filename
 
 		if [ "${out_repo}" != "${out_filename}" ]; then
 		sed -i -e 's/current/++/g' repository.txt
+		echo "" >> repository.txt
 		echo "current" >> repository.txt
 		cat $filename >> repository.txt
 		exit 0
@@ -45,7 +49,7 @@ out_filename="$(cat ${filename})"						      # printing lines in filename
 		
 	#exit 0
 	else
- 	echo "current" > repository.txt
+ 	echo "current" > repository.txt			# for the first version entry
  	cat $filename >> repository.txt
  	#exit 0
 	fi
@@ -57,8 +61,49 @@ out_filename="$(cat ${filename})"						      # printing lines in filename
 	
 	exit 0
 	
-else
-	echo number
+else							# ------VERSION CHECK-------
+
+
+arg_limit=$arg						# Usage: To display to version=exiting text file's version
+arg=$((arg+1))
+re='^[0-9]+$' 						# Regular Expression for a +ve integer
+
+	if [[ $arg =~ $re ]]; then
+	
+	
+	lineno="$(awk '/++/{ print NR;  }' repository.txt | tail -n +${arg} | head -1 )"  					
+				# awk for finding "++", tail to print nth occurance of "++" in 1st line, head for printing 1st line only 
+	
+	line="${lineno}"
+	line=$((line+1))
+	
+	limit="$(grep -wc "++" repository.txt )"
+
+	
+	empty="$(tail -n +$line repository.txt | sed '/^current$/,$d' | sed '/^++$/,$d' | sed '/^ $/,$d' )"
+	
+				# trim the version's data from repository till "++"/"current" reached 
+				
+	if [ $arg_limit == $limit ]; then				# for version= current version of text file
+	sed -n  -e '/current/,$p' repository.txt | tail -n +2
+	exit 0
+	fi
+	
+	if [ "${empty}" == "" ]; then		# condition to check whether file empty
+		echo " "
+		exit 0
+	else
+	        echo "${empty}"
+	 	exit 0
+	fi
+	
+	exit 0
+	else
+	echo "Illegal parameter"
+        exit 0
+	exit 0
+	fi
+
 exit 0
 fi
 
