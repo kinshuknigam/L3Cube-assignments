@@ -1,0 +1,67 @@
+# Program No--   04  [Simple version control]
+# Goal--         To create a simple version control (svc) program called "svc".
+# Performed by-- Kinshuk Nigam
+
+
+#! /usr/bin/bash
+#echo $# arguments 
+if [ "$#" -ne 1 ]; then					# Check for no. of cmd line agruments [$1= input file_name, $2= version ]
+    echo "Illegal number of parameters"
+    exit 0
+fi
+
+	arg=$1
+
+if [[ $arg  == *.txt ]]; then
+
+
+	touch repository.txt
+        filename=$1					# Taking filename= cmd line argument 1
+	IFS=$'\n'					
+
+
+	if [ -s repository.txt ]; then				# Check whether repository file empty or not
+
+
+
+out_repo="$(sed -n  -e '/current/,$p' repository.txt | tail -n +2)"    # 'sed' used for printing lines from line="current" to EOF
+#echo "${out_repo}"								      # tail prints lines from n=2, to avoid current.
+
+out_filename="$(cat ${filename})"						      # printing lines in filename
+#echo "${out_filename}"
+
+		if [ "${out_repo}" != "${out_filename}" ]; then
+		sed -i -e 's/current/++/g' repository.txt
+		echo "current" >> repository.txt
+		cat $filename >> repository.txt
+		exit 0
+		
+		else
+		echo "s" > /dev/null
+		exit 0
+		fi
+
+
+		
+	#exit 0
+	else
+ 	echo "current" > repository.txt
+ 	cat $filename >> repository.txt
+ 	#exit 0
+	fi
+
+	#find_current "sed -n  -e '/current/,$p' repository.txt"
+	
+	#echo $find_current
+
+	
+	exit 0
+	
+else
+	echo number
+exit 0
+fi
+
+
+
+
