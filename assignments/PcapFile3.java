@@ -1,5 +1,5 @@
 /*
-* The program displays basic details of the packets from a pcap file.
+* The program displays basic details of the packets from a pcap file named 'arp-storm.pcap'.
 * Performed in NetBeans IDE, Windows OS
 * Performed by Abhinee A. Chavan
 * July 8, 2015
