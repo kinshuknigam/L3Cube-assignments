@@ -2,7 +2,8 @@
 # Goal--         To create a simple version control (svc) program called "svc".
 # Performed by-- Kinshuk Nigam
 
-# NOTE---- To run, $chmod 777 svc	$cp svc /usr/bin/	$svc test.txt...
+# NOTE---- Extension ".sh" removed in order to make command "svc" rather than "svc.sh"
+# To run, $chmod 777 svc	$cp svc /usr/bin/	$svc test.txt...
 
 
 
