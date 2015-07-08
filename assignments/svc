@@ -9,7 +9,7 @@
 
 #! /usr/bin/bash
 #echo $# arguments 
-if [ "$#" -ne 1 ]; then					# Check for no. of cmd line agruments [$1= input file_name, $2= version ]
+if [ "$#" -ne 1 ]; then					# Check for no. of cmd line agruments [$1= input filename]
     echo "Illegal number of parameters"
     exit 0
 fi
