@@ -81,6 +81,10 @@ public class ReadLog {
             System.out.println("Get method used "+cnt4+" times");
             System.out.println("Post method used "+cnt5+" times");
             
+            int count = cnt1+cnt2+cnt3;
+            System.out.println("No of Records: "+count);
+            
+            
         }
         catch (FileNotFoundException e){
                 e.printStackTrace();
@@ -114,6 +118,7 @@ www.recipewithme.com 16 times
 
 Get method used 2608 times
 Post method used 158 times
-BUILD SUCCESSFUL (total time: 0 seconds)
+No of Records: 2640
+BUILD SUCCESSFUL (total time: 1 second)
 
 */
