@@ -1,5 +1,5 @@
 /*
-* The program displays header details of a pcap file.
+* The program displays header details of a pcap file named 'tcp-ecp-sample.pcap'.
 * Performed in NetBeans IDE, Windows OS
 * Performed by Abhinee A. Chavan
 * July 8, 2015
