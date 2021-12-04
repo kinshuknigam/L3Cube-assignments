@@ -1,6 +1,6 @@
 /*
 Program no. -- 02 (Birthday Paradox)
-Performed by-- Priyanka P Vidhate
+Performed by-- Kinshuk Nigam
 */
 
 include<iostream>
