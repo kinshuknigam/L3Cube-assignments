@@ -1,5 +1,5 @@
 /*Program no -- 05 (Duplicate file finder/remover)
-  Created By:   Ghatule Sumit
+  Created By:   Kinshuk Nigam
   Date: 		    07 July, 2015.
   Compile: 			gcc DFF.c -o dff.exe
   Run: 				  ./dff.exe  parent_dir  filename
